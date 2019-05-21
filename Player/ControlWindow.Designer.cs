@@ -81,12 +81,12 @@
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MinimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.MinimizeButton.ForeColor = System.Drawing.Color.AliceBlue;
+            this.MinimizeButton.Image = global::Player.Properties.Resources.icons8_minimize_window_48;
             this.MinimizeButton.Location = new System.Drawing.Point(702, 0);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.Size = new System.Drawing.Size(49, 44);
             this.MinimizeButton.TabIndex = 7;
             this.MinimizeButton.Tag = "";
-            this.MinimizeButton.Text = "min";
             this.MinimizeButton.UseVisualStyleBackColor = false;
             this.MinimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
             // 
@@ -99,12 +99,12 @@
             this.Close_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Close_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Close_Button.ForeColor = System.Drawing.Color.AliceBlue;
+            this.Close_Button.Image = global::Player.Properties.Resources.icons8_close_window_filled_48__1_;
             this.Close_Button.Location = new System.Drawing.Point(751, 0);
             this.Close_Button.Name = "Close_Button";
             this.Close_Button.Size = new System.Drawing.Size(49, 44);
             this.Close_Button.TabIndex = 4;
             this.Close_Button.Tag = "";
-            this.Close_Button.Text = "X";
             this.Close_Button.UseVisualStyleBackColor = false;
             this.Close_Button.Click += new System.EventHandler(this.Close_Button_Click);
             this.Close_Button.MouseEnter += new System.EventHandler(this.Close_Button_MouseEnter);

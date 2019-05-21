@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +20,7 @@ namespace Player
         private ControlWindow settings;
         private PlayList _mp3PlayList;
         private int _currentSongPLaylistIndex = 0;
+        private List<ImageDTO> _resList;
 
         #region Song Timer
         private TimeSpan songLength;
@@ -41,7 +45,12 @@ namespace Player
             songTimer = new Timer();
             songTimer.Tick += ChangeSongLength;
             FolderSong.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
-            
+            _resList = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, false, true)
+                    .Cast<DictionaryEntry>()
+                    .Where(x => x.Value.GetType() == typeof(Bitmap))
+                    .Select(x => new ImageDTO { Name = x.Key.ToString(), Image = (Image)x.Value })
+                    .ToList();
+
         }
 
         /// <summary>
@@ -257,8 +266,8 @@ namespace Player
         {
             if(sender is Button button)
             {
-                button.ForeColor = Color.Crimson;
-                this.Cursor = Cursors.Hand;
+                button.Image = Properties.Resources.icons8_close_window_filled_48;
+                this.Cursor = Cursors.Hand; 
             }
         }
 
@@ -271,7 +280,7 @@ namespace Player
         {
             if(sender is Button button)
             {
-                button.ForeColor = Color.AliceBlue;
+                button.Image = Properties.Resources.icons8_close_window_filled_48__1_;
                 this.Cursor = Cursors.Default;
             }
         }
@@ -286,19 +295,29 @@ namespace Player
         }
 
 
-        private void Buttons_MouseEnter(object sender, EventArgs e)
+        private void PictureBoxes_MouseEnter(object sender, EventArgs e)
         {
             if(sender is PictureBox box)
             {
-                box.BackColor = Color.Black;
+
+                box.Image = _resList.Where(x => x.Name.ToString()
+                    .ToLowerInvariant()
+                    .Contains(box.Name.ToString().ToLowerInvariant() + "1"))
+                .Select(x => x.Image)
+                .SingleOrDefault();
             }
         }
 
-        private void Buttons_MouseLeave(object sender, EventArgs e)
+        private void PictureBoxes_MouseLeave(object sender, EventArgs e)
         {
             if (sender is PictureBox box)
             {
-                box.BackColor = Color.AliceBlue;
+                box.Image = _resList.Where(x => x.Name.ToString()
+                        .ToLowerInvariant()
+                        .Contains(box.Name.ToString().ToLowerInvariant()))
+                    .OrderBy(x => x.Name.ToString().Length)
+                    .Select(x => x.Image)
+                    .FirstOrDefault();
             }
         }
 
@@ -426,11 +445,12 @@ namespace Player
             {
                 if(_mp3Player.IsMuted)
                 {
-                    box.Image = Properties.Resources._005_volume; _mp3Player.UnMute();
+                    box.Image = Properties.Resources.icons8_audio;
+                    _mp3Player.UnMute();
                 }
                 else
                 {
-                    box.Image = Properties.Resources._004_mute;
+                    box.Image = Properties.Resources.icons8_audio1;
                     _mp3Player.Mute();
                 }
                 

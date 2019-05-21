@@ -46,7 +46,7 @@ namespace Player
         {
             if (sender is Button button)
             {
-                button.ForeColor = Color.Crimson;
+                button.Image = Properties.Resources.icons8_close_window_filled_48;
                 this.Cursor = Cursors.Hand;
             }
         }
@@ -60,7 +60,7 @@ namespace Player
         {
             if (sender is Button button)
             {
-                button.ForeColor = Color.AliceBlue;
+                button.Image = Properties.Resources.icons8_close_window_filled_48__1_;
                 this.Cursor = Cursors.Default;
             }
         }
@@ -99,8 +99,6 @@ namespace Player
                  ProgressVolume.Value += 10;
                  _player.Volume = 10 * ProgressVolume.Value;
              }
-
-            MessageBox.Show(_player.Volume.ToString());
         }
 
         /// <summary>

@@ -38,10 +38,10 @@
             this.WindowLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.MuteButton = new System.Windows.Forms.PictureBox();
+            this.Audio = new System.Windows.Forms.PictureBox();
             this.FolderSongs = new System.Windows.Forms.PictureBox();
             this.Stop = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.singleSong = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Next = new System.Windows.Forms.PictureBox();
             this.Pause = new System.Windows.Forms.PictureBox();
@@ -54,8 +54,8 @@
             this.CurrentSong = new System.Windows.Forms.Label();
             this.CurrenTime = new System.Windows.Forms.Label();
             this.PanelIcons = new System.Windows.Forms.Panel();
-            this.SettingsButton = new System.Windows.Forms.PictureBox();
-            this.MenuButton = new System.Windows.Forms.PictureBox();
+            this.Adjust = new System.Windows.Forms.PictureBox();
+            this.List = new System.Windows.Forms.PictureBox();
             this.PanelSlide = new System.Windows.Forms.Panel();
             this.PlayListSplitter = new System.Windows.Forms.Splitter();
             this.Slider = new System.Windows.Forms.Timer(this.components);
@@ -64,18 +64,18 @@
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MuteButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Audio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FolderSongs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.singleSong)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Next)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Previous)).BeginInit();
             this.PanelIcons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingsButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Adjust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.List)).BeginInit();
             this.PanelSlide.SuspendLayout();
             this.MainStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPicture)).BeginInit();
@@ -115,12 +115,12 @@
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MinimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.MinimizeButton.ForeColor = System.Drawing.Color.AliceBlue;
+            this.MinimizeButton.Image = global::Player.Properties.Resources.icons8_minimize_window_48;
             this.MinimizeButton.Location = new System.Drawing.Point(404, 0);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.Size = new System.Drawing.Size(49, 44);
             this.MinimizeButton.TabIndex = 7;
             this.MinimizeButton.Tag = "";
-            this.MinimizeButton.Text = "min";
             this.MinimizeButton.UseVisualStyleBackColor = false;
             this.MinimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
             // 
@@ -133,12 +133,12 @@
             this.MaximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MaximizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.MaximizeButton.ForeColor = System.Drawing.Color.AliceBlue;
+            this.MaximizeButton.Image = global::Player.Properties.Resources.icons8_maximize_window_48;
             this.MaximizeButton.Location = new System.Drawing.Point(453, 0);
             this.MaximizeButton.Name = "MaximizeButton";
             this.MaximizeButton.Size = new System.Drawing.Size(49, 44);
             this.MaximizeButton.TabIndex = 6;
             this.MaximizeButton.Tag = "";
-            this.MaximizeButton.Text = "MAX";
             this.MaximizeButton.UseVisualStyleBackColor = false;
             this.MaximizeButton.Click += new System.EventHandler(this.MaximizeButton_Click);
             // 
@@ -151,12 +151,12 @@
             this.Close_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Close_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Close_Button.ForeColor = System.Drawing.Color.AliceBlue;
+            this.Close_Button.Image = global::Player.Properties.Resources.icons8_close_window_filled_48__1_;
             this.Close_Button.Location = new System.Drawing.Point(502, 0);
             this.Close_Button.Name = "Close_Button";
             this.Close_Button.Size = new System.Drawing.Size(49, 44);
             this.Close_Button.TabIndex = 4;
             this.Close_Button.Tag = "";
-            this.Close_Button.Text = "X";
             this.Close_Button.UseVisualStyleBackColor = false;
             this.Close_Button.Click += new System.EventHandler(this.CloseButton_Click);
             this.Close_Button.MouseEnter += new System.EventHandler(this.Close_Button_MouseEnter);
@@ -187,10 +187,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.MuteButton);
+            this.panel1.Controls.Add(this.Audio);
             this.panel1.Controls.Add(this.FolderSongs);
             this.panel1.Controls.Add(this.Stop);
-            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.singleSong);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 429);
             this.panel1.Name = "panel1";
@@ -198,26 +198,26 @@
             this.panel1.Size = new System.Drawing.Size(551, 64);
             this.panel1.TabIndex = 2;
             // 
-            // MuteButton
+            // Audio
             // 
-            this.MuteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MuteButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MuteButton.Image = global::Player.Properties.Resources._005_volume;
-            this.MuteButton.Location = new System.Drawing.Point(467, 5);
-            this.MuteButton.Name = "MuteButton";
-            this.MuteButton.Size = new System.Drawing.Size(79, 54);
-            this.MuteButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.MuteButton.TabIndex = 3;
-            this.MuteButton.TabStop = false;
-            this.MuteButton.Click += new System.EventHandler(this.MuteButton_Click);
-            this.MuteButton.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.MuteButton.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.Audio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Audio.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Audio.Image = global::Player.Properties.Resources.icons8_audio;
+            this.Audio.Location = new System.Drawing.Point(467, 5);
+            this.Audio.Name = "Audio";
+            this.Audio.Size = new System.Drawing.Size(79, 54);
+            this.Audio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Audio.TabIndex = 3;
+            this.Audio.TabStop = false;
+            this.Audio.Click += new System.EventHandler(this.MuteButton_Click);
+            this.Audio.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.Audio.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // FolderSongs
             // 
             this.FolderSongs.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FolderSongs.Dock = System.Windows.Forms.DockStyle.Left;
-            this.FolderSongs.Image = ((System.Drawing.Image)(resources.GetObject("FolderSongs.Image")));
+            this.FolderSongs.Image = global::Player.Properties.Resources.icons8_foldersongs;
             this.FolderSongs.Location = new System.Drawing.Point(107, 5);
             this.FolderSongs.Name = "FolderSongs";
             this.FolderSongs.Size = new System.Drawing.Size(102, 54);
@@ -225,13 +225,13 @@
             this.FolderSongs.TabIndex = 2;
             this.FolderSongs.TabStop = false;
             this.FolderSongs.Click += new System.EventHandler(this.FolderSongs_Click);
-            this.FolderSongs.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.FolderSongs.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.FolderSongs.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.FolderSongs.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // Stop
             // 
             this.Stop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Stop.Image = ((System.Drawing.Image)(resources.GetObject("Stop.Image")));
+            this.Stop.Image = global::Player.Properties.Resources.icons8_stop;
             this.Stop.Location = new System.Drawing.Point(205, 5);
             this.Stop.Name = "Stop";
             this.Stop.Size = new System.Drawing.Size(100, 54);
@@ -239,23 +239,21 @@
             this.Stop.TabIndex = 1;
             this.Stop.TabStop = false;
             this.Stop.Click += new System.EventHandler(this.Stop_Click);
-            this.Stop.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.Stop.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
             // 
-            // pictureBox2
+            // singleSong
             // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(102, 54);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.Open_Click);
-            this.pictureBox2.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.pictureBox2.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.singleSong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.singleSong.Dock = System.Windows.Forms.DockStyle.Left;
+            this.singleSong.Image = global::Player.Properties.Resources.icons8_singlesong;
+            this.singleSong.Location = new System.Drawing.Point(5, 5);
+            this.singleSong.Name = "singleSong";
+            this.singleSong.Size = new System.Drawing.Size(102, 54);
+            this.singleSong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.singleSong.TabIndex = 0;
+            this.singleSong.TabStop = false;
+            this.singleSong.Click += new System.EventHandler(this.Open_Click);
+            this.singleSong.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.singleSong.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // panel2
             // 
@@ -276,7 +274,7 @@
             // 
             this.Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.Next.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Next.Image = ((System.Drawing.Image)(resources.GetObject("Next.Image")));
+            this.Next.Image = global::Player.Properties.Resources.icons8_next;
             this.Next.Location = new System.Drawing.Point(380, 5);
             this.Next.Name = "Next";
             this.Next.Size = new System.Drawing.Size(87, 51);
@@ -284,8 +282,8 @@
             this.Next.TabIndex = 5;
             this.Next.TabStop = false;
             this.Next.Click += new System.EventHandler(this.Next_Click);
-            this.Next.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.Next.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.Next.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.Next.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // Pause
             // 
@@ -299,14 +297,14 @@
             this.Pause.TabIndex = 4;
             this.Pause.TabStop = false;
             this.Pause.Click += new System.EventHandler(this.Pause_Click);
-            this.Pause.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.Pause.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.Pause.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.Pause.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // Play
             // 
             this.Play.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.Play.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Play.Image = ((System.Drawing.Image)(resources.GetObject("Play.Image")));
+            this.Play.Image = global::Player.Properties.Resources.icons8_play;
             this.Play.Location = new System.Drawing.Point(180, 5);
             this.Play.Name = "Play";
             this.Play.Size = new System.Drawing.Size(100, 51);
@@ -314,14 +312,14 @@
             this.Play.TabIndex = 3;
             this.Play.TabStop = false;
             this.Play.Click += new System.EventHandler(this.Play_Click);
-            this.Play.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.Play.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.Play.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.Play.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // Previous
             // 
             this.Previous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.Previous.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Previous.Image = ((System.Drawing.Image)(resources.GetObject("Previous.Image")));
+            this.Previous.Image = global::Player.Properties.Resources.icons8_previous;
             this.Previous.Location = new System.Drawing.Point(80, 5);
             this.Previous.Name = "Previous";
             this.Previous.Size = new System.Drawing.Size(100, 51);
@@ -329,8 +327,8 @@
             this.Previous.TabIndex = 2;
             this.Previous.TabStop = false;
             this.Previous.Click += new System.EventHandler(this.Previous_Click);
-            this.Previous.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.Previous.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.Previous.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.Previous.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // panel4
             // 
@@ -394,43 +392,43 @@
             // 
             // PanelIcons
             // 
-            this.PanelIcons.Controls.Add(this.SettingsButton);
-            this.PanelIcons.Controls.Add(this.MenuButton);
+            this.PanelIcons.Controls.Add(this.Adjust);
+            this.PanelIcons.Controls.Add(this.List);
             this.PanelIcons.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelIcons.Location = new System.Drawing.Point(0, 44);
             this.PanelIcons.Name = "PanelIcons";
             this.PanelIcons.Size = new System.Drawing.Size(42, 296);
             this.PanelIcons.TabIndex = 7;
             // 
-            // SettingsButton
+            // Adjust
             // 
-            this.SettingsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SettingsButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SettingsButton.Image = ((System.Drawing.Image)(resources.GetObject("SettingsButton.Image")));
-            this.SettingsButton.Location = new System.Drawing.Point(0, 246);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(42, 50);
-            this.SettingsButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.SettingsButton.TabIndex = 1;
-            this.SettingsButton.TabStop = false;
-            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
-            this.SettingsButton.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.SettingsButton.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.Adjust.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Adjust.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Adjust.Image = global::Player.Properties.Resources.icons8_adjust;
+            this.Adjust.Location = new System.Drawing.Point(0, 246);
+            this.Adjust.Name = "Adjust";
+            this.Adjust.Size = new System.Drawing.Size(42, 50);
+            this.Adjust.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Adjust.TabIndex = 1;
+            this.Adjust.TabStop = false;
+            this.Adjust.Click += new System.EventHandler(this.SettingsButton_Click);
+            this.Adjust.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.Adjust.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
-            // MenuButton
+            // List
             // 
-            this.MenuButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MenuButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MenuButton.Image = ((System.Drawing.Image)(resources.GetObject("MenuButton.Image")));
-            this.MenuButton.Location = new System.Drawing.Point(0, 0);
-            this.MenuButton.Name = "MenuButton";
-            this.MenuButton.Size = new System.Drawing.Size(42, 50);
-            this.MenuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.MenuButton.TabIndex = 0;
-            this.MenuButton.TabStop = false;
-            this.MenuButton.Click += new System.EventHandler(this.MenuButton_Click);
-            this.MenuButton.MouseEnter += new System.EventHandler(this.Buttons_MouseEnter);
-            this.MenuButton.MouseLeave += new System.EventHandler(this.Buttons_MouseLeave);
+            this.List.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.List.Dock = System.Windows.Forms.DockStyle.Top;
+            this.List.Image = global::Player.Properties.Resources.icons8_playlist;
+            this.List.Location = new System.Drawing.Point(0, 0);
+            this.List.Name = "List";
+            this.List.Size = new System.Drawing.Size(42, 50);
+            this.List.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.List.TabIndex = 0;
+            this.List.TabStop = false;
+            this.List.Click += new System.EventHandler(this.MenuButton_Click);
+            this.List.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
+            this.List.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // PanelSlide
             // 
@@ -500,18 +498,18 @@
             this.MainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MuteButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Audio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FolderSongs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.singleSong)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Next)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Previous)).EndInit();
             this.PanelIcons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SettingsButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Adjust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.List)).EndInit();
             this.PanelSlide.ResumeLayout(false);
             this.MainStage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainPicture)).EndInit();
@@ -527,7 +525,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button Close_Button;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox singleSong;
         private System.Windows.Forms.PictureBox Stop;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox Next;
@@ -542,14 +540,14 @@
         private System.Windows.Forms.Label CurrentSong;
         private System.Windows.Forms.Label CurrenTime;
         private System.Windows.Forms.Panel PanelIcons;
-        private System.Windows.Forms.PictureBox MenuButton;
+        private System.Windows.Forms.PictureBox List;
         private System.Windows.Forms.Panel PanelSlide;
         private System.Windows.Forms.Timer Slider;
         private System.Windows.Forms.Splitter PlayListSplitter;
         private System.Windows.Forms.Panel MainStage;
         private System.Windows.Forms.PictureBox MainPicture;
-        private System.Windows.Forms.PictureBox SettingsButton;
-        private System.Windows.Forms.PictureBox MuteButton;
+        private System.Windows.Forms.PictureBox Adjust;
+        private System.Windows.Forms.PictureBox Audio;
         private System.Windows.Forms.Button MaximizeButton;
         private System.Windows.Forms.Button MinimizeButton;
         private Draggable draggable1;

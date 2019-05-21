@@ -58,6 +58,7 @@
     <Compile Include="Draggable.Designer.cs">
       <DependentUpon>Draggable.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageDTO.cs" />
     <Compile Include="PlayerMp3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,18 +77,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -98,52 +99,121 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\005-volume.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\001-control.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\001-folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\002-play.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\002-return.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\003-pause.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\003-right-arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\004-mute.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\004-stop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\005-next.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\006-back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\Close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\disk.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Icons\HeadPhones.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icons\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\menu.png" />
+    <None Include="Resources\Icons\icons8-close-window-filled-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-close-window-filled-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-maximize-window-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-minimize-window-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-end-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-pause-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-play-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-skip-to-start-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-stop-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-audio-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-mute-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-music-folder-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\002-return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\003-right-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-adjust-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-musical-notes-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-playlist-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-skip-to-start-50 - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-audio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-audio1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-FolderSongs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-FolderSongs1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-next1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-pause1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-play1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-playlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-playlist1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-previous1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-settings1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-singleSong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-singleSong1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\icons8-stop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
