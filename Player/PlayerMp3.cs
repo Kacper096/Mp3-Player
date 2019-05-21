@@ -36,7 +36,7 @@ namespace Player
         public PlayerMp3()
         { 
             InitializeComponent();
-             _mp3Player = new Mp3Player();
+            _mp3Player = new Mp3Player();
             _mp3PlayList = new PlayList();
             songTimer = new Timer();
             songTimer.Tick += ChangeSongLength;

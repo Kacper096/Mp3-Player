@@ -94,11 +94,13 @@ namespace Player
         /// <param name="e"></param>
         private void AddVolume_Click(object sender, EventArgs e)
         {
-            if(ProgressVolume.Value >= 0 && ProgressVolume.Value < 100)
-            {
-                ProgressVolume.Value += 10;
-                _player.Volume = 10 * ProgressVolume.Value;
-            }
+             if(ProgressVolume.Value >= 0 && ProgressVolume.Value < 100)
+             {
+                 ProgressVolume.Value += 10;
+                 _player.Volume = 10 * ProgressVolume.Value;
+             }
+
+            MessageBox.Show(_player.Volume.ToString());
         }
 
         /// <summary>

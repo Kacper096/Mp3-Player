@@ -5,8 +5,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Player
 {
@@ -18,6 +16,9 @@ namespace Player
             _namePlayer = name;
             _IsMuted = false;
             _IsPaused = false;
+            _volume = 500;
+            _treble = 500;
+            _bass = 500;
         }
 
         private bool _IsPaused;
@@ -25,6 +26,11 @@ namespace Player
         private string _currentSong = string.Empty;
         private const int _bufforLength = 1000;
         private readonly string _namePlayer;
+
+        //They contains value set by user.
+        private int? _volume;
+        private int? _bass;
+        private int? _treble;
 
         /// <summary>
         /// Gets the actual song.
@@ -45,7 +51,7 @@ namespace Player
                 if (IsMuted)
                     return null;
 
-                string val = ReadStatus("volume");
+                string val = ReadStatus();
 
                 if (int.TryParse(val, out int returnVal))
                     return returnVal;
@@ -56,7 +62,10 @@ namespace Player
             {
                 if (value is int obj)
                 { if (obj >= 0 && obj <= 1000)
+                    {
                         SetAudio(obj);
+                        _volume = obj;
+                    }
                 }
             }
         }
@@ -68,7 +77,7 @@ namespace Player
         {
             get
             {
-                string val = ReadStatus("bass");
+                string val = ReadStatus();
 
                 if (int.TryParse(val, out int returnVal))
                     return returnVal;
@@ -77,8 +86,11 @@ namespace Player
             set
             {
                 if (value is int obj)
-                    if(obj >= 0 && obj <= 1000)
-                        SetAudio(obj);
+                    if (obj >= 0 && obj <= 1000)
+                    {
+                         SetAudio(obj);
+                        _bass = obj;
+                    }
             }
         }
 
@@ -89,7 +101,7 @@ namespace Player
         {
             get
             {
-                string val = ReadStatus("treble");
+                string val = ReadStatus();
 
                 if (int.TryParse(val, out int returnVal))
                     return returnVal;
@@ -99,7 +111,10 @@ namespace Player
             {
                 if (value is int obj)
                     if (obj >= 0 && obj <= 1000)
+                    {
                         SetAudio(obj);
+                        _treble = obj;
+                    }
             }
         }
 
@@ -120,7 +135,7 @@ namespace Player
         {
             this.Stop();
             string format = $"open \"{filename}\" type MPEGVideo alias {_namePlayer}";
-            _currentSong = Path.GetFileName(filename);
+            _currentSong = Path.GetFileName(filename); 
             mciSendString(format, null, 0, 0);
 
         }
@@ -135,8 +150,13 @@ namespace Player
 
             if (loop)
                 command += " REPEAT";
-
             mciSendString(command, null, 0, 0);
+
+            //We have to setAudio the same like user set, because The deault value of SetAudio is 1000
+            this.Volume = _volume;
+            this.Bass = _bass;
+            this.Treble = _treble;
+            
             _IsPaused = false;
         }
 
@@ -200,6 +220,7 @@ namespace Player
 
             _IsMuted = false;
         }
+
         /// <summary>
         /// Gets the full length song.
         /// </summary>
@@ -242,7 +263,7 @@ namespace Player
         /// </summary>
         /// <param name="input">Type mode, volume etc.</param>
         /// <returns></returns>
-        private string ReadStatus(string input)
+        private string ReadStatus([CallerMemberName]string input = null)
         {
 
             StringBuilder returnString = new StringBuilder(_bufforLength);
