@@ -210,8 +210,6 @@
             this.Audio.TabIndex = 3;
             this.Audio.TabStop = false;
             this.Audio.Click += new System.EventHandler(this.MuteButton_Click);
-            this.Audio.MouseEnter += new System.EventHandler(this.PictureBoxes_MouseEnter);
-            this.Audio.MouseLeave += new System.EventHandler(this.PictureBoxes_MouseLeave);
             // 
             // FolderSongs
             // 
