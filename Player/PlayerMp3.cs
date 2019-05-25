@@ -163,6 +163,8 @@ namespace Player
                 path = FolderSong.SelectedPath;
             }
 
+            if (string.IsNullOrEmpty(path))
+                return;
             _mp3PlayList.PathFolder = path;
             IList<string> list = _mp3PlayList.Read;
 
