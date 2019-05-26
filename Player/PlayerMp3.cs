@@ -23,6 +23,9 @@ namespace Player
         private int _currentSongPLaylistIndex = 0;
         private List<ImageDTO> _resList;
         private bool _shuffle = false;
+        private bool _repeatFolder = false;
+        private bool _setrepeatWhilePlaying = false;
+        private bool _repeatSong = false;
 
         #region Song Timer
         private TimeSpan songLength;
@@ -87,6 +90,9 @@ namespace Player
         {
             if (!IsSongPaused())
             {
+                _repeatSong = _setrepeatWhilePlaying;
+                _setrepeatWhilePlaying = false;
+
                 // If some songs is selected in playlist.
                 if (PlayList.Items.Count != 0 && !_isSongOpened)
                 {
@@ -95,14 +101,14 @@ namespace Player
                     if (IsSongStopped())
                     {
                         SetSongTimer(_mp3Player.GetSongLength());
-                        _mp3Player.Play(false);
+                        _mp3Player.Play(_repeatSong);
                         songTimer.Start();
                         PlayingSongLabel();
                     }
                 }
                 else
                 {
-                    _mp3Player.Play(false);
+                    _mp3Player.Play(_repeatSong);
                     _isSongOpened = false;
 
                     if (songLength.TotalSeconds != 0)
@@ -199,8 +205,8 @@ namespace Player
                 if (!_shuffle)
                 {
                     int _tmpIndex = _currentSongPLaylistIndex;
-                    if (_currentSongPLaylistIndex >= PlayList.Items.Count - 1)
-                        return;
+                    if (_currentSongPLaylistIndex >= PlayList.Items.Count - 1 && _repeatFolder)
+                    { _currentSongPLaylistIndex = -1; }
                     PlayList.SetSelected(_tmpIndex, false);
                     PlayList.SetSelected(++_currentSongPLaylistIndex, true);
                 }
@@ -226,8 +232,8 @@ namespace Player
                 if (!_shuffle)
                 {
                     int _tmpIndex = _currentSongPLaylistIndex;
-                    if (_currentSongPLaylistIndex <= 0)
-                        return;
+                    if (_currentSongPLaylistIndex <= 0 && _repeatFolder)
+                    { _currentSongPLaylistIndex = PlayList.Items.Count; }
                     PlayList.SetSelected(_tmpIndex, false);
                     PlayList.SetSelected(--_currentSongPLaylistIndex, true);
                 }
@@ -409,6 +415,19 @@ namespace Player
                 SetSongTimer(new TimeSpan(0, 0, 0));
                 songTimer.Stop();
 
+                //It set if song was playing
+                if(_setrepeatWhilePlaying)
+                {
+                    this.Play_Click(sender, e);
+                    return;
+                }
+
+                if(_repeatSong)
+                {
+                    SetSongTimer(_mp3Player.GetSongLength());
+                    songTimer.Start();
+                    return;
+                }
                 //If song has been ended. This method continues playing.
                 this.Next_Click(sender, e);
             }
@@ -533,6 +552,43 @@ namespace Player
                _currentSongPLaylistIndex = _rand.Next(_playListLength);
 
            PlayList.SetSelected(_currentSongPLaylistIndex, true);
+        }
+
+        private void Repeat_Click(object sender, EventArgs e)
+        {
+            if (!_repeatFolder && (!_repeatSong && !_setrepeatWhilePlaying))
+            {
+                _repeatFolder = true;
+
+                if(sender is PictureBox box)
+                {
+                    box.Image = Properties.Resources.icons8_repeatFolder;
+                }
+                return;
+            }
+            if(!_repeatFolder && _setrepeatWhilePlaying)
+            {
+                _setrepeatWhilePlaying = false;
+
+                if(sender is PictureBox box)
+                {
+                    box.Image = Properties.Resources.icons8_repeat;
+                }
+                return;
+            }
+            else
+            {
+                if (IsSongPlaying())
+                {
+                    _setrepeatWhilePlaying = true;
+                    _repeatFolder = false;
+
+                    if(sender is PictureBox box)
+                    {
+                        box.Image = Properties.Resources.icons8_repeatSong;
+                    }
+                }
+            }
         }
     }
 }
