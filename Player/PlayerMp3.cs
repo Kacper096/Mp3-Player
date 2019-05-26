@@ -19,8 +19,10 @@ namespace Player
         private Mp3Player _mp3Player;
         private ControlWindow settings;
         private PlayList _mp3PlayList;
+        private int _lastSong = 0;
         private int _currentSongPLaylistIndex = 0;
         private List<ImageDTO> _resList;
+        private bool _shuffle = false;
 
         #region Song Timer
         private TimeSpan songLength;
@@ -194,11 +196,16 @@ namespace Player
         {
             try
             {
-                int _tmpIndex = _currentSongPLaylistIndex;
-                if (_currentSongPLaylistIndex >= PlayList.Items.Count - 1)
-                    return;
-                PlayList.SetSelected(_tmpIndex, false);
-                PlayList.SetSelected(++_currentSongPLaylistIndex, true);
+                if (!_shuffle)
+                {
+                    int _tmpIndex = _currentSongPLaylistIndex;
+                    if (_currentSongPLaylistIndex >= PlayList.Items.Count - 1)
+                        return;
+                    PlayList.SetSelected(_tmpIndex, false);
+                    PlayList.SetSelected(++_currentSongPLaylistIndex, true);
+                }
+                else
+                    Shuffling();
                 this.Play_Click(sender, e);
             }
             catch(Exception ex)
@@ -216,11 +223,16 @@ namespace Player
         {
             try
             {
-                int _tmpIndex = _currentSongPLaylistIndex;
-                if (_currentSongPLaylistIndex <= 0)
-                    return;
-                PlayList.SetSelected(_tmpIndex, false);
-                PlayList.SetSelected(--_currentSongPLaylistIndex, true);
+                if (!_shuffle)
+                {
+                    int _tmpIndex = _currentSongPLaylistIndex;
+                    if (_currentSongPLaylistIndex <= 0)
+                        return;
+                    PlayList.SetSelected(_tmpIndex, false);
+                    PlayList.SetSelected(--_currentSongPLaylistIndex, true);
+                }
+                else
+                    Shuffling();
                 this.Play_Click(sender, e);
             }
             catch(Exception ex)
@@ -397,7 +409,7 @@ namespace Player
                 SetSongTimer(new TimeSpan(0, 0, 0));
                 songTimer.Stop();
 
-                //If song has been ended. This method continue the playlist.
+                //If song has been ended. This method continues playing.
                 this.Next_Click(sender, e);
             }
             songLength -= new TimeSpan(hours:0,minutes:0,seconds:1);
@@ -482,6 +494,45 @@ namespace Player
             if (this.WindowState == FormWindowState.Maximized ||
                 this.WindowState == FormWindowState.Normal)
                 this.WindowState = FormWindowState.Minimized;
+        }
+
+        /// <summary>
+        /// After click this button we can shuffle songs in an playlist.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Shuffle_Click(object sender, EventArgs e)
+        {
+            if (!_shuffle)
+            {
+                PictureBoxes_MouseEnter(sender, e);
+                _shuffle = true;
+            }
+            else
+            {
+                PictureBoxes_MouseLeave(sender, e);
+                _shuffle = false;
+            }
+        }
+
+        /// <summary>
+        /// This method shuffles songs then sets to playlist.
+        /// </summary>
+        private void Shuffling()
+        {
+
+           PlayList.SetSelected(_currentSongPLaylistIndex, false);
+
+           int _playListLength = PlayList.Items.Count;
+
+           Random _rand = new Random();
+           _currentSongPLaylistIndex = _rand.Next(_playListLength);
+
+           //It rerolls if an song is the same as the last song.
+           while (_lastSong == _currentSongPLaylistIndex)
+               _currentSongPLaylistIndex = _rand.Next(_playListLength);
+
+           PlayList.SetSelected(_currentSongPLaylistIndex, true);
         }
     }
 }
